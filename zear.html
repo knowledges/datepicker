@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>日期控件</title>
+	<link rel="stylesheet" href="css/datepicker.css">
+</head>
+<body>
+	<span id="date">
+	    <span>选择时间段</span>
+	    <input type="text" id="start-date" readonly class="select-date">
+	    <span>-</span>
+	    <input type="text" id="end-date" readonly class="select-date">
+	</span>
+
+	<a id="btn-query" href="javascript:;">查询</a>
+</body>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/sub_zebra.js"></script>
+<script src="js/zebra_datepicker.src.js"></script>
+<script>
+	$(function(){
+		//开始时间
+		$('#start-date').Zebra_DatePicker({
+		    direction: [false,new Date()],
+		    pair: $('#end-date'),
+		    onSelect:function(){
+		        $("#end-date").val("");
+		    }
+		});
+		//结束时间
+		$('#end-date').Zebra_DatePicker({
+		    direction: [true,new Date()]
+		});
+	})
+</script>
+</html>
